@@ -286,4 +286,17 @@ const findMissNum = (arr, N) => {
   }
   return -1;
 };
-findMissNum([1, 2, 4, 5], 5);
+// findMissNum([1, 2, 4, 5], 5);
+
+// OPTIMAL SOL SUM
+
+const findMissingNumOptimal = (arr, N) => {
+  let sum = (N * (N + 1)) / 2;
+  let s2 = 0;
+  for (let i = 0; i < arr.length; i++) {
+    s2 += arr[i];
+  }
+  return sum - s2;
+};
+const f1 = findMissingNumOptimal([1, 2, 4, 5], 5);
+console.log(f1);
