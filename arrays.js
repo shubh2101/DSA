@@ -298,5 +298,41 @@ const findMissingNumOptimal = (arr, N) => {
   }
   return sum - s2;
 };
-const f1 = findMissingNumOptimal([1, 2, 4, 5], 5);
-console.log(f1);
+// const f1 = findMissingNumOptimal([1, 2, 4, 5], 5);
+// console.log(f1);
+
+// MAX CONSECUTIVE ONES
+
+function maxConsOnes(arr) {
+  let max = 0;
+  let count = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === 1) {
+      count++;
+      max = Math.max(count, max);
+    } else {
+      count = 0;
+    }
+  }
+  console.log(` max : ${max}`);
+}
+function maxConsOnes2(arr) {
+  let max = 0;
+  let count = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === 1) {
+      count++;
+    }
+    if (count >= max) {
+      max = count;
+    }
+    if (arr[i] === 0) {
+      count = 0;
+    }
+  }
+  console.log(` max : ${max}`);
+}
+
+maxConsOnes([1, 0, 1, 1, 1, 1, 1, 0, 1]);
