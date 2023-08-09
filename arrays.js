@@ -249,8 +249,7 @@ const intersection = (A, B) => {
 
 // intersection(A, B);
 
-
-// FInding Missing NUM 
+// FInding Missing NUM
 //BRUTE FORCE
 const findMissingNum = (arr, Num) => {
   for (let i = 1; i <= Num; i++) {
@@ -272,3 +271,19 @@ const findMissingNum = (arr, Num) => {
 // console.log(findMissingNum([1, 2, 4, 5], 5));
 // TC O(n * N)
 //SC O(1)
+
+//missing num hashing better soln
+const findMissNum = (arr, N) => {
+  let hash = new Array(N + 1).fill(0);
+  for (let i = 0; i < N - 1; i++) {
+    hash[arr[i]] = 1;
+  }
+
+  for (let i = 1; i < N - 1; i++) {
+    if (hash[i] === 0) {
+      return i;
+    }
+  }
+  return -1;
+};
+findMissNum([1, 2, 4, 5], 5);
