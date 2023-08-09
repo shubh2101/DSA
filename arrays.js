@@ -249,9 +249,26 @@ const intersection = (A, B) => {
 
 // intersection(A, B);
 
-// const findMissingNum = (arr, Num) => {
-//   for (let i = 0; i < arr.length; i++) {
-    
-//   }
-// };
+
+// FInding Missing NUM 
+//BRUTE FORCE
+const findMissingNum = (arr, Num) => {
+  for (let i = 1; i <= Num; i++) {
+    let flag = 0; // Initialize a flag to indicate whether the current number is found in the array
+    for (let j = 0; j < arr.length; j++) {
+      if (arr[j] === i) {
+        // Check if the current element in the array is equal to the current number being checked
+        flag = 1; // Set the flag to indicate that the number was found in the array
+        break; // Exit the loop early since we found a match
+      }
+    }
+    if (flag === 0) {
+      return i; // If the flag is still 0, the current number is missing in the array, so return it
+    }
+  }
+  return -1; // If no missing number is found, return -1
+};
+
 // console.log(findMissingNum([1, 2, 4, 5], 5));
+// TC O(n * N)
+//SC O(1)
