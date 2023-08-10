@@ -335,4 +335,86 @@ function maxConsOnes2(arr) {
   console.log(` max : ${max}`);
 }
 
-maxConsOnes([1, 0, 1, 1, 1, 1, 1, 0, 1]);
+// maxConsOnes([1, 0, 1, 1, 1, 1, 1, 0, 1]);
+
+// get single element
+// BRUTE
+
+function getSingle(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    let num = arr[i];
+    let count = 0;
+    for (let j = 0; j < arr.length; j++) {
+      count++;
+    }
+    if ((count = 1)) return arr[i];
+  }
+}
+
+const ans = getSingle([4, 1, 2, 1, 2]);
+console.log(ans)
+
+function getSingleElement(arr) {
+  // Size of the array:
+  let n = arr.length;
+
+  // Find the maximum element:
+  let maxi = arr[0];
+  for (let i = 0; i < n; i++) {
+    maxi = Math.max(maxi, arr[i]);
+  }
+
+  // Declare hash array of size maxi+1
+  // And hash the given array:
+  let hash = new Array(maxi + 1).fill(0);
+  for (let i = 0; i < n; i++) {
+    hash[arr[i]]++;
+  }
+  console.log(hash);
+
+  // Find the single element and return the answer:
+  for (let i = 0; i < n; i++) {
+    if (hash[arr[i]] === 1) {
+      return arr[i];
+    }
+  }
+
+  // This line will never execute
+  // if the array contains a single element.
+  return -1;
+}
+
+function main() {
+  let arr = [2, 2, 3, 5, 5, 8, 8];
+  let ans = getSingleElement(arr);
+  console.log("The single element is:", ans);
+}
+
+// main();
+
+function findSingleNumber(arr) {
+  const hash = {};
+
+  for (let i = 0; i < arr.length; i++) {
+    const num = arr[i];
+    if (hash[num]) {
+      hash[num]++;
+    } else {
+      hash[num] = 1;
+    }
+  }
+
+  const keys = Object.keys(hash);
+  for (let i = 0; i < keys.length; i++) {
+    const key = keys[i];
+    if (hash[key] === 1) {
+      return parseInt(key);
+    }
+  }
+}
+
+// Example usage:
+// const array = [-2, 3, 3, 5, 5, 8, 8];
+// // const array = [4, 1, 2, 1, 2];
+// const singleNumber = findSingleNumber(array);
+// console.log(singleNumber);
