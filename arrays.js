@@ -385,11 +385,11 @@ function getSingleElement(arr) {
   return -1;
 }
 
-function main() {
-  let arr = [2, 2, 3, 5, 5, 8, 8];
-  let ans = getSingleElement(arr);
-  console.log("The single element is:", ans);
-}
+// function main() {
+//   let arr = [2, 2, 3, 5, 5, 8, 8];
+//   let ans = getSingleElement(arr);
+//   console.log("The single element is:", ans);
+// }
 
 // main();
 
@@ -430,5 +430,29 @@ const getSingleXOR = (arr) => {
   }
   return XOR;
 };
-const ans1 = getSingleXOR([4, 1, 2, 1, 2, 8, 8]);
-console.log(ans1)
+// const ans1 = getSingleXOR([4, 1, 2, 1, 2, 8, 8]);
+// console.log(ans1)
+
+//LONGEST SUB-ARRAY WITH SUM K (POSITIVES)
+
+//BRUTE
+
+function longestSubarray(arr, k) {
+  let len = 0;
+  const n = arr.length;
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n; j++) {
+      let sum = 0;
+      for (let k = i; k <= j; k++) {
+        sum += arr[k];
+      }
+      if (sum === k) {
+        len = Math.max(len, j - i + 1);
+      }
+    }
+  }
+  return len;
+}
+
+const len = longestSubarray([1, 2, 3, 1, 1, 1, 1, 1, 4, 2, 3], 3);
+console.log("The length of the longest subarray is:", len);
