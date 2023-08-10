@@ -351,9 +351,10 @@ function getSingle(arr) {
   }
 }
 
-const ans = getSingle([4, 1, 2, 1, 2]);
-console.log(ans)
+// const ans = getSingle([4, 1, 2, 1, 2]);
+// console.log(ans);
 
+//BETTER ONE
 function getSingleElement(arr) {
   // Size of the array:
   let n = arr.length;
@@ -392,6 +393,7 @@ function main() {
 
 // main();
 
+// BETTER 2
 function findSingleNumber(arr) {
   const hash = {};
 
@@ -418,3 +420,15 @@ function findSingleNumber(arr) {
 // // const array = [4, 1, 2, 1, 2];
 // const singleNumber = findSingleNumber(array);
 // console.log(singleNumber);
+
+// OPTIMAL USING XOR
+
+const getSingleXOR = (arr) => {
+  let XOR = 0;
+  for (let i = 0; i < arr.length; i++) {
+    XOR = XOR ^ arr[i];
+  }
+  return XOR;
+};
+const ans1 = getSingleXOR([4, 1, 2, 1, 2, 8, 8]);
+console.log(ans1)
