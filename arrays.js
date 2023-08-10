@@ -441,7 +441,7 @@ function longestSubarray(arr, k) {
   let len = 0;
   const n = arr.length;
   for (let i = 0; i < n; i++) {
-    for (let j = 0; j < n; j++) {
+    for (let j = i; j < n; j++) {
       let sum = 0;
       for (let k = i; k <= j; k++) {
         sum += arr[k];
@@ -454,5 +454,26 @@ function longestSubarray(arr, k) {
   return len;
 }
 
-const len = longestSubarray([1, 2, 3, 1, 1, 1, 1, 1, 4, 2, 3], 3);
+// const len = longestSubarray([1, 2, 3, 1, 1, 1, 1, 1, 4, 2, 3], 3);
+// console.log("The length of the longest subarray is:", len);
+//TC = O(n*n*n)
+
+// BRUTE FORCE 2 with TC O(n*n)
+
+function longestSubarray2(arr, k) {
+  let len = 0;
+  const n = arr.length;
+  for (let i = 0; i < n; i++) {
+    let sum = 0;
+
+    for (let j = i; j < n; j++) {
+      sum += arr[j];
+      if (sum === k) {
+        len = Math.max(len, j - i + 1);
+      }
+    }
+  }
+  return len;
+}
+const len = longestSubarray2([1, 2, 3, 1, 1, 1, 1, 1, 4, 2, 3], 3);
 console.log("The length of the longest subarray is:", len);
