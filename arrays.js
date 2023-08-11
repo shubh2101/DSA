@@ -475,5 +475,38 @@ function longestSubarray2(arr, k) {
   }
   return len;
 }
-const len = longestSubarray2([1, 2, 3, 1, 1, 1, 1, 1, 4, 2, 3], 3);
-console.log("The length of the longest subarray is:", len);
+// const len = longestSubarray2([1, 2, 3, 1, 1, 1, 1, 1, 4, 2, 3], 3);
+// console.log("The length of the longest subarray is:", len);
+
+// Better soln MAP
+function longestSubarrayWithSum(arr, k) {
+  const n = arr.length;
+  let preSumMap = new Map();
+  let currSum = 0;
+  let maxLength = 0;
+  for (let i = 0; i < n; i++) {
+    currSum += arr[i];
+
+    if (currSum === k) {
+      maxLength = Math.max(maxLength, i + 1);
+    }
+
+    let rem = currSum - k;
+
+    if (preSumMap.has(rem)) {
+      let len = i - preSumMap.get(rem);
+      maxLength = Math.max(maxLength, len);
+    }
+
+    if (!preSumMap.has(currSum)) {
+      preSumMap.set(currSum, i);
+    }
+  }
+
+  return maxLength; // Return the maxLength
+}
+
+const array = [1, 2, 0, 3, -2, 5];
+const sum = 6;
+const result = longestSubarrayWithSum(array, sum);
+console.log("The length of the longest subarray is:", result); // Output should be 4 (subarray: [1, 2, 3, -2])
