@@ -489,17 +489,20 @@ function longestSubarrayWithSum(arr, k) {
 
     if (currSum === k) {
       maxLength = Math.max(maxLength, i + 1);
+      // If the current prefix sum equals k, update maxLen if needed
     }
 
-    let rem = currSum - k;
+    let rem = currSum - k; // Calculate the sum of the remaining part (x - k)
 
     if (preSumMap.has(rem)) {
       let len = i - preSumMap.get(rem);
       maxLength = Math.max(maxLength, len);
+      // If the difference (x - k) exists in preSumMap, calculate the length of subarray and update maxLen
     }
 
     if (!preSumMap.has(currSum)) {
       preSumMap.set(currSum, i);
+      // Store the current prefix sum and its index in preSumMap
     }
   }
 
