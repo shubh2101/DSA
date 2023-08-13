@@ -73,3 +73,46 @@ function twoSumOptimal(arr, target) {
 
 //TC = O(n + n*logn)
 //SC = O(1)
+
+// SORT ARRAYS OF 0s, 1s, 2s,
+
+// Brute merge sort TC = O(n logn) SC = O(n)
+
+// BETTER soln
+
+function sortZereosOnesTwos(arr) {
+  let count0 = 0;
+  let count1 = 0;
+  let count2 = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === 0) count0++;
+    else if (arr[i] === 1) count1++;
+    else count2++;
+  }
+  let i = 0;
+  while (i < arr.length) {
+    if (i < count0) {
+      arr[i] = 0;
+    } else if (i >= count0 && i < count0 + count1) {
+      arr[i] = 1;
+    } else {
+      arr[i] = 2;
+    }
+    i++;
+  }
+  // or run  for loops
+  //   for (let i = 0; i < arr.length; i++) {
+  //     if (i < count0) {
+  //       arr[i] = 0;
+  //     } else if (i >= count0 && i < count0 + count1) {
+  //       arr[i] = 1;
+  //     } else {
+  //       arr[i] = 2;
+  //     }
+  //   }
+
+  console.log(arr);
+}
+
+sortZereosOnesTwos([0, 1, 2, 0, 1, 2, 1, 2, 0, 0, 0, 1]);
