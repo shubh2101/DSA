@@ -29,6 +29,7 @@ function twoSumBetter(arr, target) {
 }
 // console.log(twoSumBetter([2, 6, 5, 8, 11], 14));
 //TC O(n)
+//SC O(n)
 
 // using object
 
@@ -49,3 +50,26 @@ function twoSum(nums, target) {
 }
 
 //TC O(n)
+//SC O(n)
+
+// OPTIMAL FOR VARIENT 1 USING 2 POINTER
+
+function twoSumOptimal(arr, target) {
+  let left = 0,
+    right = arr.length - 1;
+
+  arr.sort((a, b) => a - b);
+
+  while (left < right) {
+    const sum = arr[left] + arr[right];
+    if (sum < target) left++;
+    if (sum > target) right--;
+    if (sum === target) return true;
+  }
+  return false;
+}
+
+// console.log(twoSumOptimal([2, 6, 5, 8, 11], 14));
+
+//TC = O(n + n*logn)
+//SC = O(1)
