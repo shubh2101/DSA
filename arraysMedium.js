@@ -115,4 +115,27 @@ function sortZereosOnesTwos(arr) {
   console.log(arr);
 }
 
-sortZereosOnesTwos([0, 1, 2, 0, 1, 2, 1, 2, 0, 0, 0, 1]);
+// sortZereosOnesTwos([0, 1, 2, 0, 1, 2, 1, 2, 0, 0, 0, 1]);
+
+function sortZereosOnesTwosDutchFlag(arr) {
+  let low = 0;
+  let mid = 0;
+  let high = arr.length - 1;
+
+  for (let i = 0; mid <= high; i++) {
+    if (arr[mid] === 0) {
+      //swap low and mid
+      [arr[low], arr[mid]] = [arr[mid], arr[low]];
+      low++;
+      mid++;
+    } else if (arr[mid] === 1) {
+      mid++;
+    } else {
+      // swap high and mid
+      [arr[high], arr[mid]] = [arr[mid], arr[high]];
+      high--;
+    }
+  }
+  console.log(arr);
+}
+sortZereosOnesTwosDutchFlag([0, 1, 2, 0, 1, 2, 1, 2, 0, 0, 0, 1]);
