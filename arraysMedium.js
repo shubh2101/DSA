@@ -140,7 +140,7 @@ function sortZereosOnesTwosDutchFlag(arr) {
 }
 // sortZereosOnesTwosDutchFlag([0, 1, 2, 0, 1, 2, 1, 2, 0, 0, 0, 1]);
 
-function sortZereosOnesTwosDutchFlag2(arr) {
+function sortZereosOnesTwosDutchFlagWhile(arr) {
   let low = 0;
   let mid = 0;
   let high = arr.length - 1;
@@ -166,4 +166,4 @@ function swap(arr, i, j) {
   [arr[i], arr[j]] = [arr[j], arr[i]];
 }
 
-sortZereosOnesTwosDutchFlag([0, 1, 2, 0, 1, 2, 1, 2, 0, 0, 0, 1]);
+sortZereosOnesTwosDutchFlagWhile([0, 1, 2, 0, 1, 2, 1, 2, 0, 0, 0, 1]);
