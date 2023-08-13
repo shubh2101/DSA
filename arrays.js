@@ -511,5 +511,30 @@ function longestSubarrayWithSum(arr, k) {
 
 const array = [1, 2, 0, 3, -2, 5];
 const sum = 6;
-const result = longestSubarrayWithSum(array, sum);
-console.log("The length of the longest subarray is:", result); // Output should be 4 (subarray: [1, 2, 3, -2])
+// const result = longestSubarrayWithSum(array, sum);
+// console.log("The length of the longest subarray is:", result); // Output should be 4 (subarray: [1, 2, 3, -2])
+
+function longestSubarrayOptimal(arr, k) {
+  const n = arr.length;
+  let left = 0;
+  let right = 0;
+  let maxLen = 0;
+  let sum = arr[0];
+
+  while (right < n) {
+    while (left <= right && sum > k) {
+      sum -= arr[left];
+      left++;
+    }
+    if (sum === k) {
+      maxLen = Math.max(maxLen, right - left + 1);
+    }
+    right++;
+    sum += arr[right];
+  }
+  return maxLen;
+}
+
+const arr3 = [-1, 3, 1, 3, -2, 5];
+const sum3 = 6;
+console.log(longestSubarrayOptimal(arr3, sum3));
