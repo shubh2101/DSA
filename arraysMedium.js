@@ -207,4 +207,38 @@ const majorityElementHashing = (arr) => {
   return -1;
 };
 
-console.log(majorityElementHashing([2, 2, 2, 3, 3]));
+// console.log(majorityElementHashing([3, 2, 2, 3, 3, 2, 2]));
+// TC = O(n)
+// SC = O(n)
+
+//MOORE VOTING ALGO (OPTIMAL)
+
+function majorityElementMooreVoting(arr) {
+  let candidate = null;
+  let count = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (count === 0) {
+      candidate = arr[i];
+      count = 1;
+    } else if (arr[i] === candidate) {
+      count++;
+    } else {
+      count--;
+    }
+  }
+  // check if its majority el
+  let counter = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === candidate) {
+      counter++;
+    }
+  }
+
+  if (counter > arr.length / 2) {
+    return candidate;
+  }
+
+  return null;
+}
+
+console.log(majorityElementMooreVoting([2, 2, 1, 1, 1, 2, 2, 1, 1]));
