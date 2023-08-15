@@ -187,3 +187,24 @@ function majorityElement(arr) {
   return -1;
 }
 // console.log(majorityElement([2, 2, 3, 4, 5, 3, 3, 2, 2, 2, 2]));
+
+// BETTER SOLUTION
+//HASHING
+
+const majorityElementHashing = (arr) => {
+  const countMap = new Map();
+  for (let i = 0; i < arr.length; i++) {
+    if (countMap.has(arr[i])) {
+      countMap.set(arr[i], countMap.get(arr[i]) + 1);
+      if (countMap.get(arr[i]) > arr.length / 2) {
+        return arr[i];
+      }
+    } else {
+      countMap.set(arr[i], 1);
+    }
+  }
+
+  return -1;
+};
+
+console.log(majorityElementHashing([2, 2, 2, 3, 3]));
