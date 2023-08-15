@@ -166,4 +166,24 @@ function swap(arr, i, j) {
   [arr[i], arr[j]] = [arr[j], arr[i]];
 }
 
-sortZereosOnesTwosDutchFlagWhile([0, 1, 2, 0, 1, 2, 1, 2, 0, 0, 0, 1]);
+// sortZereosOnesTwosDutchFlagWhile([0, 1, 2, 0, 1, 2, 1, 2, 0, 0, 0, 1]);
+
+// MAJORITY ELEMENT IN THE ARRAY
+//BRUTE
+
+function majorityElement(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    let count = 0;
+    for (let j = 0; j < arr.length; j++) {
+      if (arr[j] === arr[i]) {
+        count++;
+      }
+    }
+
+    if (count > arr.length / 2) {
+      return arr[i];
+    }
+  }
+  return -1;
+}
+// console.log(majorityElement([2, 2, 3, 4, 5, 3, 3, 2, 2, 2, 2]));
