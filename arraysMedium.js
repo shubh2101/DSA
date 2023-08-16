@@ -263,6 +263,7 @@ function maxSubarraySumBrute(arr) {
 }
 
 // console.log(maxSubarraySumBrute([-2, -3, 4, -1, -2, 1, 5, -3]));
+// TC = O(n * n* n)
 
 // Better
 
@@ -278,4 +279,25 @@ function maxSubarraySumBetter(arr) {
   return maxi;
 }
 
-console.log(maxSubarraySumBetter([-2, -3, 4, -1, -2, 1, 5, -3]));
+// console.log(maxSubarraySumBetter([-2, -3, 4, -1, -2, 1, 5, -3]));
+// TC = O(n * n)
+
+// OPTIMAL
+// KADANE ALGORITHM
+
+function maxSubarraySumKadane(arr) {
+  let maxi = Number.MIN_SAFE_INTEGER;
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+    if (sum < 0) {
+      sum = 0;
+    }
+    maxi = Math.max(maxi, sum);
+  }
+  console.log(maxi);
+}
+maxSubarraySumKadane([-2, -3, 4, -1, -2, 1, 5, -3]);
+
+//TC = O(n)
+//SC = O(1)
