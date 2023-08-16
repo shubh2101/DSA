@@ -241,4 +241,25 @@ function majorityElementMooreVoting(arr) {
   return null;
 }
 
-console.log(majorityElementMooreVoting([2, 2, 1, 1, 1, 2, 2, 1, 1]));
+// console.log(majorityElementMooreVoting([2, 2, 1, 1, 1, 2, 2, 1, 1]));
+
+// MAXIMUM SUBARRAY SUM
+//BRUTE FORCE
+
+function maxSubarraySumBrute(arr) {
+  let maxi = Number.MIN_SAFE_INTEGER;
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length; j++) {
+      let sum = 0;
+      for (let k = i; k <= j; k++) {
+        {
+          sum += arr[k];
+          maxi = Math.max(maxi, sum);
+        }
+      }
+    }
+  }
+  return maxi;
+}
+
+console.log(maxSubarraySumBrute([-2, -3, 4, -1, -2, 1, 5, -3]));
