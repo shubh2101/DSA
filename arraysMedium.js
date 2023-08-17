@@ -326,4 +326,22 @@ function rearrangeArray(arr) {
 }
 // TC = O(n) + O(n/2)
 // SC = O(n/2) + O(n/2)
-console.log(rearrangeArray([3, 1, -2, -5, 2, -4]));
+// console.log(rearrangeArray([3, 1, -2, -5, 2, -4]));
+
+function rearrangeArrayOptimal(arr) {
+  let resultArr = [];
+  let posIndex = 0;
+  let negIndex = 1;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > 0) {
+      resultArr[posIndex] = arr[i];
+      posIndex += 2;
+    } else {
+      resultArr[negIndex] = arr[i];
+      negIndex += 2;
+    }
+  }
+  console.log(resultArr);
+}
+
+rearrangeArrayOptimal([3, 1, -2, -5, 2, -4]);
