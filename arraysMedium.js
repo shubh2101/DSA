@@ -297,7 +297,33 @@ function maxSubarraySumKadane(arr) {
   }
   console.log(maxi);
 }
-maxSubarraySumKadane([-2, -3, 4, -1, -2, 1, 5, -3]);
+// maxSubarraySumKadane([-2, -3, 4, -1, -2, 1, 5, -3]);
 
 //TC = O(n)
 //SC = O(1)
+
+//REARRANGE THE POSITIVES AND NEGATIVES ALTERNATIVELY
+
+//brute
+
+function rearrangeArray(arr) {
+  let pos = [];
+  let neg = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > 0) {
+      pos.push(arr[i]);
+    } else {
+      neg.push(arr[i]);
+    }
+  }
+
+  for (let i = 0; i < arr.length / 2; i++) {
+    arr[2 * i] = pos[i];
+    arr[2 * i + 1] = neg[i];
+  }
+  return arr;
+}
+// TC = O(n) + O(n/2)
+// SC = O(n/2) + O(n/2)
+console.log(rearrangeArray([3, 1, -2, -5, 2, -4]));
