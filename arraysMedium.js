@@ -1,4 +1,4 @@
-// TWO SUM PROBLEM
+// 1) TWO SUM PROBLEM
 
 // Brute force
 
@@ -74,7 +74,7 @@ function twoSumOptimal(arr, target) {
 //TC = O(n + n*logn)
 //SC = O(1)
 
-// SORT ARRAYS OF 0s, 1s, 2s,
+// 2) SORT ARRAYS OF 0s, 1s, 2s,
 
 // Brute merge sort TC = O(n logn) SC = O(n)
 
@@ -168,7 +168,7 @@ function swap(arr, i, j) {
 
 // sortZereosOnesTwosDutchFlagWhile([0, 1, 2, 0, 1, 2, 1, 2, 0, 0, 0, 1]);
 
-// MAJORITY ELEMENT IN THE ARRAY
+// 3) MAJORITY ELEMENT IN THE ARRAY
 //BRUTE
 
 function majorityElement(arr) {
@@ -243,7 +243,7 @@ function majorityElementMooreVoting(arr) {
 
 // console.log(majorityElementMooreVoting([2, 2, 1, 1, 1, 2, 2, 1, 1]));
 
-// MAXIMUM SUBARRAY SUM
+// 4) MAXIMUM SUBARRAY SUM
 //BRUTE FORCE
 
 function maxSubarraySumBrute(arr) {
@@ -302,7 +302,7 @@ function maxSubarraySumKadane(arr) {
 //TC = O(n)
 //SC = O(1)
 
-//REARRANGE THE POSITIVES AND NEGATIVES ALTERNATIVELY
+// 5) REARRANGE THE POSITIVES AND NEGATIVES ALTERNATIVELY
 
 //brute
 
@@ -344,4 +344,45 @@ function rearrangeArrayOptimal(arr) {
   console.log(resultArr);
 }
 
-rearrangeArrayOptimal([3, 1, -2, -5, 2, -4]);
+// rearrangeArrayOptimal([3, 1, -2, -5, 2, -4]);
+
+// variety 2 if positives and negatives are not equal
+
+//Brute
+
+function rearrangeArrayVar2(arr) {
+  const n = arr.length;
+  let pos = [];
+  let neg = [];
+
+  for (let i = 0; i < n; i++) {
+    if (arr[i] > 0) {
+      pos.push(arr[i]);
+    } else {
+      neg.push(arr[i]);
+    }
+  }
+  const minSize = Math.min(pos.length, neg.length);
+  const maxSize = Math.max(pos.length, neg.length);
+
+  for (let i = 0; i < minSize; i++) {
+    arr[2 * i] = pos[i];
+    arr[2 * i + 1] = neg[i];
+  }
+
+  index = minSize * 2;
+
+  for (let i = minSize; i < maxSize; i++) {
+    if (pos.length > neg.length) {
+      arr[index] = pos[i];
+      index++;
+    } else {
+      arr[index] = neg[i];
+      index++;
+    }
+  }
+
+  console.log(arr);
+}
+
+rearrangeArrayVar2([1, -2, -4, -55, -21, -11, 89, 99]);
