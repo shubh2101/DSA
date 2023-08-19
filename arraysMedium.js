@@ -385,4 +385,41 @@ function rearrangeArrayVar2(arr) {
   console.log(arr);
 }
 
-rearrangeArrayVar2([1, -2, -4, -55, -21, -11, 89, 99]);
+// rearrangeArrayVar2([1, -2, -4, -55, -21, -11, 89, 99]);
+
+// 6) NEXT PERMUTATION
+// OPTIMAL
+
+function nextPermutation(arr) {
+  let pivot = -1;
+  const n = arr.length;
+
+  for (let i = n - 2; i >= 0; i--) {
+    if (arr[i] < arr[i + 1]) {
+      pivot = i;
+      break;
+    }
+  }
+
+  //no pivot found
+
+  if (pivot === -1) {
+    arr.reverse();
+  }
+
+  for (let j = n - 1; j >= pivot; j--) {
+    if (arr[j] > arr[pivot]) {
+      [arr[j], arr[pivot]] = [arr[pivot], arr[j]];
+      break;
+    }
+  }
+
+  //reverse the suffix
+
+  const arr1 = arr.slice(pivot + 1, n);
+  arr.splice(pivot + 1, n, ...arr1);
+
+  console.log(arr);
+}
+
+nextPermutation([2, 1, 5, 4, 3, 0, 0]);
