@@ -422,4 +422,26 @@ function nextPermutation(arr) {
   console.log(arr);
 }
 
-nextPermutation([2, 1, 5, 4, 3, 0, 0]);
+// nextPermutation([2, 1, 5, 4, 3, 0, 0]);
+
+//LEADER OF AN ARRAY
+
+//BRUTE
+
+function leaderArray(arr) {
+  let result = [];
+  for (let i = 0; i < arr.length; i++) {
+    let leader = true;
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j] > arr[i]) {
+        leader = false;
+      }
+    }
+    if (leader === true) {
+      result.push(arr[i]);
+    }
+  }
+  return result;
+}
+// TC = O(n*n)
+console.log(leaderArray([10, 22, 12, 3, 0, 6]));
