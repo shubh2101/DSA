@@ -444,4 +444,18 @@ function leaderArray(arr) {
   return result;
 }
 // TC = O(n*n)
-console.log(leaderArray([10, 22, 12, 3, 0, 6]));
+// console.log(leaderArray([10, 22, 12, 3, 0, 6]));
+
+const leaderArrayOptimal = (arr) => {
+  let maxi = Number.MIN_SAFE_INTEGER;
+  let result = [];
+  let n = arr.length;
+  for (let i = n - 1; i >= 0; i--) {
+    if (arr[i] > maxi) {
+      result.push(arr[i]);
+      maxi = arr[i];
+    }
+  }
+  return result.sort((a, b) => a - b);
+};
+console.log(leaderArrayOptimal([10, 22, 12, 3, 0, 6]));
