@@ -458,4 +458,8 @@ const leaderArrayOptimal = (arr) => {
   }
   return result.sort((a, b) => a - b);
 };
-console.log(leaderArrayOptimal([10, 22, 12, 3, 0, 6]));
+// console.log(leaderArrayOptimal([10, 22, 12, 3, 0, 6]));
+
+// LONGEST CONSECUTIVE SEQUENCE
+
+
