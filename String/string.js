@@ -11,6 +11,15 @@ const capitalize = (animals) => {
   return result;
 };
 
+//using map method
+const capitalizeMap = (arr) => {
+  const output = arr.map((word) => {
+    return word[0].toUpperCase() + word.slice(1);
+  });
+  return output;
+};
+console.log(capitalizeMap(animals));
+
 // console.log(capitalize(animals));
 
 // 2
@@ -26,4 +35,4 @@ const capitalizeStr = (string) => {
   return capitalWords.join(' ');
 };
 
-console.log(capitalizeStr(string));
+// console.log(capitalizeStr(string));
