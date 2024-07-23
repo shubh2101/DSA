@@ -1,4 +1,13 @@
 //PATTERN 1
+for (let i = 1; i <= 5; i++) {
+  let str = '';
+  for (let j = 1; j <= i; j++) {
+    str += '* ';
+  }
+  console.log(str);
+}
+
+//PATTERN 2
 // 1
 // 1 2
 // 1 2 3
@@ -8,9 +17,9 @@
 for (let i = 1; i <= 5; i++) {
   let str = '';
   for (let j = 1; j <= i; j++) {
-    str = str + j;
+    str = str + j + ' ';
   }
-  //   console.log(str);
+  console.log(str);
 }
 
 // PATTERN 2 :Floyd triangle
@@ -27,5 +36,5 @@ for (let i = 1; i <= 5; i++) {
     str += k;
     k++;
   }
-  console.log(str);
+  //   console.log(str);
 }
